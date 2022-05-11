@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/test/center_slice.dart';
 import 'package:flutter_app/test/stagger_animation.dart';
 
 void main() {
@@ -81,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextButton(
               onPressed: () {
@@ -92,6 +93,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     ));
               },
               child: const Text("StaggerAnimation"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CenterSlice(),
+                    ));
+              },
+              child: const Text("Image CenterSlice"),
             ),
           ],
         ),
