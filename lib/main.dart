@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/test/center_slice.dart';
+import 'package:flutter_app/test/scroll_animation.dart';
 import 'package:flutter_app/test/stagger_animation.dart';
 
 void main() {
@@ -103,6 +104,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     ));
               },
               child: const Text("Image CenterSlice"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ScrollAnimation(),
+                    ));
+              },
+              child: const Text("ScrollAnimation"),
             ),
           ],
         ),
