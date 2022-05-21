@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/test/ysl_listener.dart';
 import 'package:provider/provider.dart';
 
 double maxHeight=650.0;
@@ -86,13 +87,7 @@ class _ScrollAnimationState extends State<ScrollAnimation> with TickerProviderSt
             bottom: 50,
             width: size.width,
             height: config.scrollHeight,
-            child: Listener(
-              onPointerSignal: (PointerSignalEvent event){
-                print("onPointerSignal==[${event.delta.dy}");
-              },
-              onPointerHover: (PointerHoverEvent event){
-                print("onPointerHover==[${event.delta.dy}");
-              },
+            child: YSListener(
               // behavior: HitTestBehavior.opaque,
               onPointerMove: (PointerMoveEvent event) {
                 print("onPointerMove==[${event.delta.dy}");
@@ -106,6 +101,7 @@ class _ScrollAnimationState extends State<ScrollAnimation> with TickerProviderSt
                   config.scrollPhysics = BouncingScrollPhysics();
                 } else if (config.scrollHeight < minHeight) {
                   config.scrollHeight = minHeight;
+                  scollController.jumpTo(scollController.initialScrollOffset);
                   config.scrollPhysics = NeverScrollableScrollPhysics();
                 } else{
 
