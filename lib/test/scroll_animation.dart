@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/test/ysl_listener.dart';
 import 'package:provider/provider.dart';
 
-double maxHeight=650.0;
-double minHeight=200.0;
+double maxHeight = 650.0;
+double minHeight = 200.0;
 
 class ScrollAnimation extends StatefulWidget {
   const ScrollAnimation({Key? key}) : super(key: key);
@@ -22,13 +22,16 @@ class Config extends ChangeNotifier {
   double scrollHeight = minHeight;
 }
 
-class _ScrollAnimationState extends State<ScrollAnimation> with TickerProviderStateMixin{
+class _ScrollAnimationState extends State<ScrollAnimation>
+    with TickerProviderStateMixin {
   Config config = Config();
 
   ScrollController scollController = ScrollController();
 
   late Animation<double> animation;
   late AnimationController controller;
+
+  bool top = false;
 
   @override
   void initState() {
@@ -88,24 +91,45 @@ class _ScrollAnimationState extends State<ScrollAnimation> with TickerProviderSt
             width: size.width,
             height: config.scrollHeight,
             child: YSListener(
-              // behavior: HitTestBehavior.opaque,
+              onPointerUp: (PointerUpEvent event) {
+                print("onPointerUp==[${scollController.offset}");
+              },
+              onPointerExit: (PointerExitEvent event) {
+                print("onPointerExit==[${scollController.offset}");
+              },
               onPointerMove: (PointerMoveEvent event) {
                 print("onPointerMove==[${event.delta.dy}");
                 print("controller==[${scollController.offset}");
 
-                if(scollController.offset==Offset.zero)
+                if ((scollController.offset > 0 &&
+                        top == true &&
+                        event.delta.dy > 0) ||
+                    (config.scrollHeight == maxHeight && event.delta.dy < 0)) {
+                  //(scollController.offset > 0 &&
+                  //                         top == true &&
+                  //                         event.delta.dy > 0)
+                  //是滑动到顶部，向下拉，需要平滑拉下来
+
+                  // (config.scrollHeight == maxHeight && event.delta.dy < 0)
+                  //第一次上划到顶部时，继续上划，需要响应
+
+                  double y = scollController.offset;
+                  y -= event.delta.dy;
+                  scollController.jumpTo(y);
                   return;
+                }
+
                 config.scrollHeight -= event.delta.dy;
                 if (config.scrollHeight > maxHeight) {
                   config.scrollHeight = maxHeight;
                   config.scrollPhysics = BouncingScrollPhysics();
+                  top = true;
                 } else if (config.scrollHeight < minHeight) {
                   config.scrollHeight = minHeight;
                   scollController.jumpTo(scollController.initialScrollOffset);
                   config.scrollPhysics = NeverScrollableScrollPhysics();
-                } else{
-
-                }
+                  top = false;
+                } else {}
 
                 setState(() {});
               },
