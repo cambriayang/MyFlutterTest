@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+// ignore_for_file: prefer_const_constructors, avoid_print
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/test/ysl_listener.dart';
-import 'package:provider/provider.dart';
 
 double maxHeight = 650.0;
 double minHeight = 200.0;
