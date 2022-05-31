@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
+import 'dart:math';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/test/ysl_listener.dart';
@@ -7,12 +9,12 @@ import 'package:flutter_app/test/ysl_listener.dart';
 double maxHeight = 650.0;
 double minHeight = 200.0;
 
-class ScrollAnimation extends StatefulWidget {
-  const ScrollAnimation({Key? key}) : super(key: key);
+class UnionScroll extends StatefulWidget {
+  const UnionScroll({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _ScrollAnimationState();
+    return _UnionScrollState();
   }
 }
 
@@ -21,7 +23,7 @@ class Config extends ChangeNotifier {
   double scrollHeight = minHeight;
 }
 
-class _ScrollAnimationState extends State<ScrollAnimation>
+class _UnionScrollState extends State<UnionScroll>
     with TickerProviderStateMixin {
   Config config = Config();
 
@@ -51,19 +53,19 @@ class _ScrollAnimationState extends State<ScrollAnimation>
     //   });
     // }
 
-    controller = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    );
-
-    //匀速
-    animation = Tween(begin: maxHeight, end: minHeight).animate(controller)
-      ..addListener(() {
-        setState(() => {});
-      });
-
-    //启动动画(正向执行)
-    controller.forward();
+    // controller = AnimationController(
+    //   duration: const Duration(seconds: 2),
+    //   vsync: this,
+    // );
+    //
+    // //匀速
+    // animation = Tween(begin: maxHeight, end: minHeight).animate(controller)
+    //   ..addListener(() {
+    //     setState(() => {});
+    //   });
+    //
+    // //启动动画(正向执行)
+    // controller.forward();
   }
 
   @override
@@ -78,10 +80,12 @@ class _ScrollAnimationState extends State<ScrollAnimation>
         children: [
           GestureDetector(
             onTap: () {
-              print("==[Tap The Grey");
+              setState(() {
+
+              });
             },
             child: Container(
-              color: Colors.grey,
+              color: Color.fromARGB(255, Random().nextInt(256)+0, Random().nextInt(256)+0, Random().nextInt(256)+0),
             ),
           ),
 

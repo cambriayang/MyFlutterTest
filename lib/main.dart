@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/test/center_slice.dart';
-import 'package:flutter_app/test/scroll_animation.dart';
+import 'package:flutter_app/test/union_scroll.dart';
 import 'package:flutter_app/test/stagger_animation.dart';
+import 'package:flutter_app/test/gesture_test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -110,10 +111,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ScrollAnimation(),
+                      builder: (context) => UnionScroll(),
                     ));
               },
-              child: const Text("ScrollAnimation"),
+              child: const Text("UnionScroll"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GestureTest(),
+                    ));
+              },
+              child: const Text("GestureTest"),
             ),
           ],
         ),
