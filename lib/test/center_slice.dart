@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CenterSlice extends StatelessWidget {
+  const CenterSlice({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

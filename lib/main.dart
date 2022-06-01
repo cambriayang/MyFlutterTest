@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/test/animated_switcher.dart';
 import 'package:flutter_app/test/animated_widgets_test.dart';
 import 'package:flutter_app/test/animation_test.dart';
 import 'package:flutter_app/test/center_slice.dart';
@@ -216,6 +217,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     ));
               },
               child: const Text("HttpTestRoute"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyAnimatedSwitcherRouter(),
+                    ));
+              },
+              child: const Text("MyAnimatedSwitcherRouter"),
             ),
           ],
         ),
