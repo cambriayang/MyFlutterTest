@@ -31,6 +31,7 @@ class _UnionScrollState extends State<UnionScroll>
 
   late Animation<double> animation;
   late AnimationController controller;
+  late Color _bgColor;
 
   bool top = false;
 
@@ -38,6 +39,8 @@ class _UnionScrollState extends State<UnionScroll>
   void initState() {
     super.initState();
 
+    _bgColor = Color.fromARGB(255, Random().nextInt(256) + 0,
+        Random().nextInt(256) + 0, Random().nextInt(256) + 0);
     // if (scollController.hasListeners == false) {
     //   scollController.addListener(() {
     //     print("==[offset: ${scollController.offset}");
@@ -81,11 +84,12 @@ class _UnionScrollState extends State<UnionScroll>
           GestureDetector(
             onTap: () {
               setState(() {
-
+                _bgColor = Color.fromARGB(255, Random().nextInt(256) + 0,
+                    Random().nextInt(256) + 0, Random().nextInt(256) + 0);
               });
             },
             child: Container(
-              color: Color.fromARGB(255, Random().nextInt(256)+0, Random().nextInt(256)+0, Random().nextInt(256)+0),
+              color: _bgColor,
             ),
           ),
 
@@ -93,13 +97,7 @@ class _UnionScrollState extends State<UnionScroll>
             bottom: 50,
             width: size.width,
             height: config.scrollHeight,
-            child: YSListener(
-              onPointerUp: (PointerUpEvent event) {
-                print("onPointerUp==[${scollController.offset}");
-              },
-              onPointerExit: (PointerExitEvent event) {
-                print("onPointerExit==[${scollController.offset}");
-              },
+            child: Listener(
               onPointerMove: (PointerMoveEvent event) {
                 print("onPointerMove==[${event.delta.dy}");
                 print("controller==[${scollController.offset}");

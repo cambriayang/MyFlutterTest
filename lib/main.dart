@@ -5,6 +5,7 @@ import 'package:flutter_app/test/animated_switcher.dart';
 import 'package:flutter_app/test/animated_widgets_test.dart';
 import 'package:flutter_app/test/animation_test.dart';
 import 'package:flutter_app/test/center_slice.dart';
+import 'package:flutter_app/test/custom_animation.dart';
 import 'package:flutter_app/test/custom_check_box.dart';
 import 'package:flutter_app/test/custom_paint.dart';
 import 'package:flutter_app/test/dio_test.dart';
@@ -227,6 +228,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     ));
               },
               child: const Text("MyAnimatedSwitcherRouter"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CustomAnim(),
+                    ));
+              },
+              child: const Text("CustomAnim"),
             ),
           ],
         ),
