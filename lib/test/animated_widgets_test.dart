@@ -19,6 +19,7 @@ class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
   Color _color = Colors.red;
   TextStyle _style = TextStyle(color: Colors.black);
   Color _decorationColor = Colors.blue;
+  double _opacity = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +110,23 @@ class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
               ),
               style: _style,
               duration: duration,
+            ),
+            AnimatedOpacity(
+              opacity: _opacity,
+              duration: duration,
+              child: TextButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue)),
+                onPressed: () {
+                  setState(() {
+                    _opacity = 0.2;
+                  });
+                },
+                child: const Text(
+                  "AnimatedOpacity",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ].map((e) {
             return Padding(
