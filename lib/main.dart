@@ -1,5 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter_app/test/animated_widgets_test.dart';
+import 'package:flutter_app/test/animation_test.dart';
 import 'package:flutter_app/test/center_slice.dart';
+import 'package:flutter_app/test/custom_check_box.dart';
+import 'package:flutter_app/test/custom_paint.dart';
+import 'package:flutter_app/test/dio_test.dart';
+import 'package:flutter_app/test/gradient_button_test.dart';
+import 'package:flutter_app/test/hero_animation.dart';
+import 'package:flutter_app/test/http_test.dart';
 import 'package:flutter_app/test/union_scroll.dart';
 import 'package:flutter_app/test/stagger_animation.dart';
 import 'package:flutter_app/test/gesture_test.dart';
@@ -54,6 +64,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    List<String> tests = ["AnimatedWidgetsTest"];
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -125,6 +136,86 @@ class _MyHomePageState extends State<MyHomePage> {
                     ));
               },
               child: const Text("GestureTest"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AnimatedWidgetsTest(),
+                    ));
+              },
+              child: const Text("AnimatedWidgetsTest"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AnimationTest(),
+                    ));
+              },
+              child: const Text("AnimationTest"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CustomCheckboxTest(),
+                    ));
+              },
+              child: const Text("CustomCheckbox"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CustomPaintRoute(),
+                    ));
+              },
+              child: const Text("CustomPaintRoute"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DioTest(),
+                    ));
+              },
+              child: const Text("DioTest"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GradientButtonRoute(),
+                    ));
+              },
+              child: const Text("GradientButton"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HeroAnimationRoute(),
+                    ));
+              },
+              child: const Text("HeroAnimationRoute"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HttpTestRoute(),
+                    ));
+              },
+              child: const Text("HttpTestRoute"),
             ),
           ],
         ),
