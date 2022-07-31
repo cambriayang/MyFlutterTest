@@ -15,7 +15,7 @@ class CenterSlice extends StatelessWidget {
         child: Column(
           children: [
             _bubbleBody(),
-            _arrowBody(),
+            // _arrowBody(),
           ],
         ),
       ),
