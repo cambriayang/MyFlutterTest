@@ -92,7 +92,6 @@ class _UnionScrollState extends State<UnionScroll>
               color: _bgColor,
             ),
           ),
-
           Positioned(
             bottom: 50,
             width: size.width,
@@ -139,17 +138,17 @@ class _UnionScrollState extends State<UnionScroll>
                 controller: scollController,
                 slivers: [
                   // AppBar，包含一个导航栏.
-                  // SliverAppBar(
-                  //   pinned: true, // 滑动到顶端时会固定住
-                  //   expandedHeight: 250.0,
-                  //   flexibleSpace: FlexibleSpaceBar(
-                  //     title: const Text('Demo'),
-                  //     background: Image.asset(
-                  //       'assets/images/sanjiao.png',
-                  //       fit: BoxFit.fill,
-                  //     ),
-                  //   ),
-                  // ),
+                  SliverAppBar(
+                    pinned: true, // 滑动到顶端时会固定住
+                    expandedHeight: 250.0,
+                    flexibleSpace: FlexibleSpaceBar(
+                      title: const Text('Demo'),
+                      background: Image.asset(
+                        'assets/images/sanjiao.png',
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
                   SliverPadding(
                     padding: const EdgeInsets.all(8.0),
                     sliver: SliverGrid(
@@ -191,82 +190,6 @@ class _UnionScrollState extends State<UnionScroll>
               ),
             ),
           ),
-          // Positioned(
-          //   bottom: 50,
-          //   width: size.width,
-          //   height: config.scrollHeight,
-          //   child: GestureDetector(
-          //     onVerticalDragUpdate: (DragUpdateDetails details) {
-          //       print("==[ges_y: ${details.delta.dy}");
-          //       config.scrollHeight-=details.delta.dy;
-          //
-          //       if(config.scrollHeight>maxHeight){
-          //         config.scrollHeight=maxHeight;
-          //         config.scrollPhysics=BouncingScrollPhysics();
-          //       }else if(config.scrollHeight<minHeight){
-          //         config.scrollHeight=minHeight;
-          //         config.scrollPhysics=NeverScrollableScrollPhysics();
-          //       }
-          //
-          //       setState(() {});
-          //     },
-          //     child: CustomScrollView(
-          //       physics: config.scrollPhysics,
-          //       controller: scollController,
-          //       slivers: [
-          //         // AppBar，包含一个导航栏.
-          //         // SliverAppBar(
-          //         //   pinned: true, // 滑动到顶端时会固定住
-          //         //   expandedHeight: 250.0,
-          //         //   flexibleSpace: FlexibleSpaceBar(
-          //         //     title: const Text('Demo'),
-          //         //     background: Image.asset(
-          //         //       'assets/images/sanjiao.png',
-          //         //       fit: BoxFit.fill,
-          //         //     ),
-          //         //   ),
-          //         // ),
-          //         SliverPadding(
-          //           padding: const EdgeInsets.all(8.0),
-          //           sliver: SliverGrid(
-          //             //Grid
-          //             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //               crossAxisCount: 2, //Grid按两列显示
-          //               mainAxisSpacing: 10.0,
-          //               crossAxisSpacing: 10.0,
-          //               childAspectRatio: 4.0,
-          //             ),
-          //             delegate: SliverChildBuilderDelegate(
-          //                   (BuildContext context, int index) {
-          //                 //创建子widget
-          //                 return Container(
-          //                   alignment: Alignment.center,
-          //                   color: Colors.cyan[100 * (index % 9)],
-          //                   child: Text('grid item $index'),
-          //                 );
-          //               },
-          //               childCount: 20,
-          //             ),
-          //           ),
-          //         ),
-          //         SliverFixedExtentList(
-          //           itemExtent: 50.0,
-          //           delegate: SliverChildBuilderDelegate(
-          //                 (BuildContext context, int index) {
-          //               //创建列表项
-          //               return Container(
-          //                 alignment: Alignment.center,
-          //                 color: Colors.lightBlue[100 * (index % 9)],
-          //                 child: Text('list item $index'),
-          //               );
-          //             },
-          //             childCount: 20,
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
