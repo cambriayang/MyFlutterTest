@@ -87,9 +87,14 @@ class MyDrawPathPainter extends CustomPainter {
     paint.style = PaintingStyle.stroke;
     paint.strokeWidth = 5.0;
     paint.color = Colors.red;
-// path.moveTo(size.width / 2, 200); 无效
-    Rect oval = Rect.fromPoints(const Offset(0, 0), const Offset(280, 180));
-    path.addArc(oval, 100, pi / -2);
+// 画一个矩形区域
+    Rect rect = Rect.fromCircle(
+        center: Offset(size.width / 2, size.height / 2), radius: 200);
+    canvas.drawRect(rect, paint);
+// 在矩形区域画圆弧
+    path.addArc(rect, 90 * (pi / 180), 90 * (pi / 180));
+    paint.color = Colors.black;
+    canvas.drawPath(path, paint);
 
     canvas.drawPath(path, paint);
   }
