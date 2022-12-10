@@ -7,6 +7,7 @@ import 'package:flutter_app/test/animation_test.dart';
 import 'package:flutter_app/test/center_slice.dart';
 import 'package:flutter_app/test/custom_animation.dart';
 import 'package:flutter_app/test/custom_check_box.dart';
+import 'package:flutter_app/test/custom_draw_path.dart';
 import 'package:flutter_app/test/custom_paint.dart';
 import 'package:flutter_app/test/dio_test.dart';
 import 'package:flutter_app/test/gradient_button_test.dart';
@@ -238,6 +239,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     ));
               },
               child: const Text("CustomAnim"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CustomDrawPathRoute(),
+                    ));
+              },
+              child: const Text("CustomDrawPathRoute"),
             ),
           ],
         ),
