@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, slash_for_doc_comments
 
 /*********************************************************************************
  * Author: Argost Ye
@@ -6,6 +6,7 @@
  **********************************************************************************/
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CustomPaintRoute extends StatelessWidget {
@@ -26,7 +27,9 @@ class CustomPaintRoute extends StatelessWidget {
 class MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    print("paint");
+    if (kDebugMode) {
+      print("paint");
+    }
     var rect = Offset.zero & size;
     drawChessboard(canvas, rect);
     drawPieces(canvas, rect);
@@ -73,6 +76,7 @@ class MyPainter extends CustomPainter {
     paint.color = Colors.white;
     canvas.drawCircle(
         Offset(rect.center.dx + eWidth / 2, rect.center.dy - eHeight / 2),
-        min(eWidth / 2, eHeight / 2), paint);
+        min(eWidth / 2, eHeight / 2),
+        paint);
   }
 }

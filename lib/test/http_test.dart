@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace
 
 /*********************************************************************************
  * Author: Argost Ye
@@ -7,6 +7,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HttpTestRoute extends StatefulWidget {
@@ -55,7 +56,9 @@ class _HttpTestRouteState extends State<HttpTestRoute> {
           "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1");
       HttpClientResponse response = await request.close();
       _text = await response.transform(utf8.decoder).join();
-      print(response.headers);
+      if (kDebugMode) {
+        print(response.headers);
+      }
       httpClient.close();
     } catch (e) {
       _text = "请求失败：$e";

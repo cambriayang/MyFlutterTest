@@ -1,11 +1,11 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, slash_for_doc_comments, prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 /*********************************************************************************
  * Author: Argost Ye
  * Time: 1/18/22
  **********************************************************************************/
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
 
 class GradientButton extends StatelessWidget {
   final List<Color>? colors;
@@ -28,8 +28,8 @@ class GradientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    List<Color> _colors = colors ??
-        [theme.primaryColor, theme.primaryColorDark];
+    List<Color> _colors =
+        colors ?? [theme.primaryColor, theme.primaryColorDark];
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -73,7 +73,9 @@ class GradientButtonRoute extends StatefulWidget {
 
 class _GradientButtonRouteState extends State<GradientButtonRoute> {
   onTap() {
-    print("Button clicked");
+    if (kDebugMode) {
+      print("Button clicked");
+    }
   }
 
   @override
