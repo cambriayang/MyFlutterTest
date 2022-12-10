@@ -84,6 +84,13 @@ class _StaggerRouteState extends State<StaggerRouter>
   late AnimationController _controller;
 
   @override
+  void dispose() {
+    _controller.stop();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
     _controller = AnimationController(
@@ -97,7 +104,7 @@ class _StaggerRouteState extends State<StaggerRouter>
       await _controller.forward().orCancel;
       await _controller.reverse().orCancel;
     } on TickerCanceled {
-      _controller.reset();
+      // _controller.reset();
     }
   }
 
